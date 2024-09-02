@@ -13,9 +13,9 @@ train_dir = r'C:\Users\khatr\OneDrive - Prime College\Desktop\ML\data\train'
 test_dir = r'C:\Users\khatr\OneDrive - Prime College\Desktop\ML\data\test'
 
 # Image preprocessing and augmentation
-target_size = (64, 64)
-batch_size = 8
-epochs = 100
+target_size = (128, 128)
+batch_size = 8  
+epochs = 400
 
 # Ensure that TensorFlow uses the GPU
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
@@ -109,7 +109,7 @@ def build_cnn_model(input_shape):
     return model
 
 # Build the model with input shape (64, 64, 3) for color images (3 channels)
-input_shape = (64, 64, 3)
+input_shape = (128, 128, 3)
 cnn_model = build_cnn_model(input_shape)
 
 # Define the checkpoint callback to save the best model
@@ -132,7 +132,7 @@ history = cnn_model.fit(
 )
 
 # Load the best saved model for inference
-best_model = tf.keras.models.load_model('best_model.h5')
+best_model = tf.keras.models.load_model('best_model.keras')
 
 # Example inference on a single image
 def predict_image(img_path, model):
@@ -150,7 +150,7 @@ def predict_image(img_path, model):
     return predicted_class, prediction
 
 # Example usage for inference
-img_path = 'path_to_your_image.jpg'  # Provide the path to an image for prediction
+img_path = 'aa.jpg'  # Provide the path to an image for prediction
 predicted_class, prediction = predict_image(img_path, best_model)
 print(f'Predicted class: {predicted_class}')
 print(f'Prediction confidence: {prediction}')
