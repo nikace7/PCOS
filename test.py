@@ -24,7 +24,7 @@ def predict_image(img_path, model):
         return None, None
 
 # Example usage for inference
-img_path = 'aa.png'  # Provide the path to an image for prediction
+img_path = 'q.jpg'  # Provide the path to an image for prediction
 predicted_class, prediction = predict_image(img_path, best_model)
 if predicted_class is not None:
     print(f'Predicted class: {predicted_class}')
