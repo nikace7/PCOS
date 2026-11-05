@@ -1,3 +1,7 @@
 Lib/
 Scripts/
 share/
+.ipynb_checkpoints/
+etc/
+pyvenv.cfg
+*.crdownload
