@@ -5,3 +5,4 @@ share/
 etc/
 pyvenv.cfg
 *.crdownload
+*.keras
