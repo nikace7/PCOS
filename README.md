@@ -90,9 +90,8 @@ To prevent overfitting on medical features, training is protected by three compl
 PCOS/
 ├── SASPCOS.py             # Full end-to-end training pipeline & CNN definition
 ├── test.py                # Standalone inference utility for single-scan evaluation
-├── Untitled.ipynb         # Interactive Jupyter research notebook (EDA & evaluation)
-├── best_model.keras       # Serialized production model weights (HDF5 / Keras format)
-├── sample_images/         # Ultrasound test samples (.jpg, .png)
+├── pcos_cnn_notebook.ipynb  # Jupyter research notebook (EDA & evaluation)
+├── sample_images/         # Two ultrasound samples for test.py
 └── README.md
 ```
 
@@ -118,8 +117,15 @@ source venv/bin/activate
 pip install tensorflow numpy pillow jupyter matplotlib
 ```
 
-#### 2. Running Inference on an Ultrasound Scan
-To run a prediction against an ultrasound image:
+#### 2. Download the Trained Model
+The weights (~40 MB) are attached to a GitHub Release rather than stored in git:
+```bash
+gh release download model-v1 -R nikace7/PCOS -p best_model.keras
+```
+Or download `best_model.keras` from the [model-v1 release](https://github.com/nikace7/PCOS/releases/tag/model-v1) into the repository root.
+
+#### 3. Running Inference on an Ultrasound Scan
+To run a prediction against `sample_images/w.jpg`:
 ```bash
 python test.py
 ```
@@ -136,7 +142,7 @@ print(f"Prediction: {'PCOS Detected' if label == 1 else 'Normal'}")
 print(f"Confidence Score: {confidence[0][0]:.4f}")
 ```
 
-#### 3. Retraining the CNN
+#### 4. Retraining the CNN
 To train the model on a new or expanded dataset:
 1. Organize your dataset directory structure:
    ```
