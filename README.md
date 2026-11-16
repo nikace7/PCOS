@@ -162,6 +162,14 @@ To train the model on a new or expanded dataset:
 
 ---
 
+### Results and Known Issue
+
+The training log in `pcos_cnn_notebook.ipynb` reports **100% training and validation accuracy** with a validation loss of effectively zero. That is not a credible result for ultrasound screening. The most likely cause is data leakage: the public PCOS ultrasound dataset contains duplicate and near-duplicate scans, and the train/test split was not deduplicated, so the model is probably being validated on images it has already seen.
+
+Treat the reported accuracy as unverified. A trustworthy number needs the dataset deduplicated (for example by perceptual hash) before splitting, and ideally a split by patient.
+
+---
+
 ### Clinical Disclaimer
 
 > **Important:** This repository and its accompanying weights are intended strictly for academic research and educational exploration in biomedical computer vision. They are **not** certified as medical diagnostic devices and should not be used for clinical decision-making or diagnosis without clinical validation and regulatory oversight.
